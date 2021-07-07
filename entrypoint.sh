@@ -14,6 +14,8 @@ echo "### Getting branch"
 BRANCH=${GITHUB_REF#*refs/heads/}
 echo "### git fetch $BRANCH ..."
 git fetch origin $BRANCH
+echo "### Update Submodules"
+git submodule update --init
 echo "### Branch: $BRANCH (ref: $GITHUB_REF )"
 git checkout $BRANCH
 
