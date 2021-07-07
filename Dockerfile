@@ -59,4 +59,4 @@ RUN apt-get update && apt-get install -y \
 
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["source", "/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
