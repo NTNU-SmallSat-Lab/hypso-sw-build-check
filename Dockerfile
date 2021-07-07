@@ -58,5 +58,6 @@ RUN apt-get update && apt-get install -y \
     graphviz
 
 COPY entrypoint.sh /entrypoint.sh
+COPY check.sh /check.sh
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
