@@ -12,6 +12,12 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
     git \
     cmake
 
+RUN apt-get update && apt-get install -y \
+        git \
+        jq \
+        wget \
+        xz-utils
+
 #Make a HYPSO user
 RUN adduser --disabled-password --gecos '' hypso && \
     usermod -aG sudo hypso && \
