@@ -1,4 +1,4 @@
-name: 'clang-format Code Formatter'
+name: 'CI tests'
 description: 'Runs check on hypso code'
 author: 'sivertba'
 inputs: 
