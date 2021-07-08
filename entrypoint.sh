@@ -1,3 +1,5 @@
+#!/bin/bash
+
 make clean;
 RESULT=$?
 if [ $RESULT -eq 0 ]; then
