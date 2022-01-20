@@ -27,6 +27,16 @@ else
   exit 3
 fi
 
+
+make ARCH=arm64;
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+  echo make arm success
+else
+  echo make arm for 64-bit failed
+  exit 5
+fi
+
 make test;
 RESULT=$?
 if [ $RESULT -eq 0 ]; then
