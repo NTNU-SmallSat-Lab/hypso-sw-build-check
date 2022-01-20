@@ -10,6 +10,7 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
     sudo \
     locales \
     git \
+    clang-tools \
     cmake
 
 #Make a HYPSO user
@@ -47,17 +48,20 @@ RUN apt-get install -y \
     make
 
 
-# Download packages for cross compiling
+# Download packages for cross compiling arm
 RUN apt-get install -y \
     binutils-arm-linux-gnueabihf \
     gcc-arm-linux-gnueabihf
+
+# Download packages for cross compiling arm 64-bit (aarch64)
+RUN apt-get install -y \
+    gcc-aarch64-linux-gnu \
+    binutils-aarch64-linux-gnu
 
 # Packages for producing doxygen output. F.ex callgraphs
 RUN apt-get update && apt-get install -y \
     doxygen \
     graphviz
 
-COPY entrypoint.sh /entrypoint.sh
-COPY check.sh /check.sh
-
-CMD ["/entrypoint.sh"]
+USER hypso
+WORKDIR /home/hypso/
