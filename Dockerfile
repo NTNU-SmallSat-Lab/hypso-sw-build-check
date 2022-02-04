@@ -1,7 +1,12 @@
 #
 
-# Use Ubuntu 18.04 as a base image
-FROM ubuntu:18.04
+# Use Ubuntu 20.04 as a base image
+FROM ubuntu:20.04
+
+# Fix timezone issue
+ENV TZ=Europe/Oslo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 
 # Install general tools and libraries
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
@@ -28,7 +33,7 @@ RUN apt-get update && apt-get install -y \
 # Compile and install nng. Remove source files afterwards
 RUN git clone https://github.com/nanomsg/nng /home/hypso/nng && \
     cd /home/hypso/nng && \
-    git checkout 8d3b53879bdaf1b1d617a40633a66eea9eb345ef && \
+    git checkout v1.5.2 && \
     mkdir build && \
     cd build && \
     cmake -G Ninja .. && \
