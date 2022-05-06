@@ -68,5 +68,6 @@ RUN apt-get update && apt-get install -y \
     doxygen \
     graphviz
 
-USER hypso
-WORKDIR /home/hypso/
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
